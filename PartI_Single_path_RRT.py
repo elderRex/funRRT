@@ -198,13 +198,16 @@ class RRT:
         return False
 #print sys.argv[0]
 #print len(sys.argv)
-if len(sys.argv) < 2:
+if len(sys.argv) < 4:
     myRRT = RRT()
+    myRRT.config('obstacle.txt', 'startgoal.txt')
 else:
     print "Your step size "+sys.argv[1]
     myRRT = RRT(10000,int(sys.argv[1]))
+    obs = sys.argv[2]
+    sg = sys.argv[3]
+    myRRT.config(obs, sg)
 
-myRRT.config('obstacle.txt','startgoal.txt')
 myRRT.start_draw()
 myRRT.build_RRT()
 myRRT.end_draw()
