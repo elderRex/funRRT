@@ -1,5 +1,5 @@
 
-import os
+import getopt
 import sys
 import matplotlib.pyplot as plt
 import matplotlib.path as mpt
@@ -196,8 +196,13 @@ class RRT:
                 return True
 
         return False
-
-myRRT = RRT()
+#print sys.argv[0]
+#print len(sys.argv)
+if len(sys.argv) < 2:
+    myRRT = RRT()
+else:
+    print "Your step size "+sys.argv[1]
+    myRRT = RRT(10000,int(sys.argv[1]))
 
 myRRT.config('obstacle.txt','startgoal.txt')
 myRRT.start_draw()
